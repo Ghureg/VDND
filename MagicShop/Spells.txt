@@ -1,0 +1,9 @@
+Broom Staff
+Cost: 2
+Continued Cost: NA
+Cast Time: Instant
+Range: LOS
+Discription: 
+Upon receiving this spell add a wooden broom to your inventory. The broom is stronger than steel and is extremely hard to break. The broom must be used as a primary weapon or the broom will lose loyalty. Using this spell allows the caster to command the broom to fly anywhere on the battlefield. At the end of the caster’s turn, they snap their fingers and are teleported to be on the broom. After doing so the broom lowers to the ground allowing the caster to step off. The broom also may be ridden doubling the caster’s movement range.
+
+
