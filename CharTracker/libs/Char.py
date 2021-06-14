@@ -1,4 +1,4 @@
-import ../../MagicShop
+import SpellShop
 class Character():
     def __init__(self):
         self.PlayerName = "Player"
@@ -24,4 +24,14 @@ class Character():
     def ChangeGold(self, amount):
         self.gold = self.gold + amount
     def AddSpell(self, SpellName):
-        
+        Spells = SpellShop.Shop()
+        for i in range(0,len(Spells.SpellList)):
+            if Spells.SpellList[i][0] == SpellName:
+                self.spells.append(Spells.SpellList[i])
+                return None
+    def RemoveSpell(self, SpellName):
+        for i in range(0,len(self.spells)):
+            if self.spells[i][0] == SpellName:
+                del self.spells[i]
+                return None
+    
