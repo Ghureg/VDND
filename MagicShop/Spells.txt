@@ -1,9 +1,72 @@
-Broom Staff
+Fortify Bones
+Cost: 3
+Continued Cost: NA
+Cast Time: Instant
+Range: NA
+Discription: 
+No one drinks as much milk as they should. Casting this spell fortifies the bones of your allies, causing them to receive half damage for the next  3 rounds of combat. This may be cast only once per combat.
+
+
+Mental Assault
+Cost: 2
+Continued Cost: 2 per round
+Cast Time: Instant
+Range: Touching
+Discription: 
+The caster removes their consciousness from their body which falls on the ground unconscious. They may enter the mind of a target that they are touching. (this may occur on any roll higher than critical fail.) If successful (+5) full possession of the target may occur giving the caster access to both their own and the target’s spells, as well as full control over the target’s actions. If the spell fails (-4) the minds meld together and both the caster and the target receive each other’s memories. And the target also becomes unconscious. The caster and target must enter a dice battle. 2 out of 3 wins. The winner keeps their memories and sanity. The loose now holds both caster’s and target’s memories and is now insane.
+
+
+Shadow Companion
+Cost: 5
+Continued Cost: 1 stamina per re-summoning from death.
+Cast Time: Instant
+Range: Touching
+Discription: 
+The caster summons forth a companion. The type of companion must be determined during character creation or upon receiving the spell. The companion may cast any spell that the caster holds (using the caster’s stamina as cost) and must follow the direction of the caster. The caster may also receive sensory input from the companion if wanted. The companion may be dispelled or will dissipate (die) if the caster ever death rolls. The companion may not interact with the world in a tangible way. If it does, the companion receives 10 stamina and requires two permanent stamina to resummon.
+
+
+Shadow Step
 Cost: 2
 Continued Cost: NA
 Cast Time: Instant
 Range: LOS
 Discription: 
-Upon receiving this spell add a wooden broom to your inventory. The broom is stronger than steel and is extremely hard to break. The broom must be used as a primary weapon or the broom will lose loyalty. Using this spell allows the caster to command the broom to fly anywhere on the battlefield. At the end of the caster’s turn, they snap their fingers and are teleported to be on the broom. After doing so the broom lowers to the ground allowing the caster to step off. The broom also may be ridden doubling the caster’s movement range.
+Step into one shadow and reappear in another. Must have LOS to your target. Before casting the caster may also note if they will return, and when. If doing this they return to the original location after the noted amount of time, without casting another spell, and without another cost. If noted, a return time, it will happen regardless if the caster changes their mind.
+
+
+Corruption
+Cost: 2
+Continued Cost: NA
+Cast Time: Instant
+Range: 3m
+Discription: 
+The caster may attempt to corrupt the mind of a target. If a 20 is rolled they become a permanent companion of the caster. If 5+ is rolled it is successful and may control the being for a single turn, force them to attack allies, cast spells, or move. If a 1 is cast the spell backfires and the target may control the caster for a single turn. Otherwise, the spell fails If the spell fails 3 times in a row, the caster becomes vulnerable in light and may not cast any spells while in the presence of bright light.
+
+
+Fortify Bones
+Cost: 3
+Continued Cost: NA
+Cast Time: Instant
+Range: NA
+Discription: 
+No one drinks as much milk as they should. Casting this spell fortifies the bones of your allies, causing them to receive half damage for the next  3 rounds of combat. This may be cast only once per combat.
+
+
+Malnourish
+Cost: 3
+Continued Cost: NA
+Cast Time: Instant
+Range: Battlefield
+Discription: 
+Emit a thin fog across the entire battlefield. For the rest of the round low rolls by enemies cause 3 damage. This may be cast once per session.
+
+
+Raven’s Claw
+Cost: 3
+Continued Cost: NA
+Cast Time: 1 Turn
+Range: NA
+Discription: 
+Conjure forth a giant raven that may target a being by name. The raven will not stop attempting to kill the target until it is dispelled, by a phrase spoken to it at the time of conjure by the caster. The raven will also dispel if it can not access the person at any time, or hit with a light spell.
 
 
