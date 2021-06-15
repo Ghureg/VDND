@@ -20,7 +20,7 @@ class Character():
     def ChangeAction(self, space, newvalue):
         self.action[space] = newvalue
     def TriggerAction(self, space):
-        self.action[i] = self.action[i]*-1
+        self.action[space] = self.action[space]*-1
     def ChangeGold(self, amount):
         self.gold = self.gold + amount
     def AddSpell(self, SpellName):
