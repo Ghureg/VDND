@@ -23,6 +23,13 @@ class Character():
             self.health = self.maxhealth
         if self.health <= 0:
             self.health = 0
+    def ChangeRace(self):
+        pos_Race = ["DWARF", "ELF", "GNOME","CROWN", "BEAST", "MANDOZIAN", "CATHARINES", "ENORKANS", "XENOKIAN", "VESTIAN", "SWORD", "HERGSOIGISE"]
+        current = pos_Race.index(self.race)
+        if current+1 > len(pos_Race)-1:
+            self.race = pos_Race[0]
+        else:
+            self.race = pos_Race[current+1]
     def ChangeAction(self, space, newvalue):
         self.action[space] = newvalue
     def ChangeGold(self, amount):
