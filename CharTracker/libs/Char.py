@@ -11,7 +11,7 @@ class Character():
         # 2 = Movement
         # 3 = Basic Attack
         # 4 = Spell
-        self.actions = [3,4,2,1,1]
+        self.actions = [3,4,2,1]
         self.spells = []
     def ChangePlayerName(self, NewName):
         self.PlayerName = NewName
@@ -30,8 +30,10 @@ class Character():
             self.race = pos_Race[0]
         else:
             self.race = pos_Race[current+1]
-    def ChangeAction(self, space, newvalue):
-        self.action[space] = newvalue
+    def ChangeAction(self, space):
+        self.actions[space] = self.actions[space]+1
+        if self.actions[space] >4:
+            self.actions[space] = 1
     def ChangeGold(self, amount):
         self.gold = self.gold + amount
     def AddSpell(self, SpellName):

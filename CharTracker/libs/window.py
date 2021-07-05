@@ -38,7 +38,7 @@ if __name__=='__main__':
         CharName = StringVar()
         Character_Name = Label(TopFrame, textvariable=CharName, bg=Tab_Color, fg=Text_Color, font = LebelFont)
         CharName.set(Character.CharName)
-        Character_Name.pack(side = LEFT, padx=5)
+        Character_Name.pack(side = LEFT, padx=5, anchor=W)
         #Character  Stamina
         StamFrame = Frame(TopFrame, bg=Tab_Color,bd=2)
         StamFrame.pack(side = LEFT, padx = 5)
@@ -159,7 +159,7 @@ if __name__=='__main__':
         removePlayerFrame = Frame(TopFrame, bg=Tab_Color)
         removePlayerFrame.pack(side = RIGHT)
         removePlayer_Symbole = StringVar()
-        removePlayer_Button= Label(removePlayerFrame, textvariable=removePlayer_Symbole, bg=Tab_Color, fg=Text_Color, font = OtherFont)
+        removePlayer_Button= Label(removePlayerFrame, textvariable=removePlayer_Symbole, bg=Tab_Color, fg="#992109", font = OtherFont)
         removePlayer_Symbole.set("-")
         removePlayer_Button.pack(side=RIGHT)
         removePlayer_Button.bind('<Button-1>', delete_Char)
@@ -169,7 +169,7 @@ if __name__=='__main__':
         # Second Row Frame
         #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
         SecondFrame = Frame(CharFrame, bg=Tab_Color,bd=2)
-        SecondFrame.pack(side = TOP)
+        SecondFrame.pack(side = TOP, anchor=W)
 
 
 
@@ -216,46 +216,141 @@ if __name__=='__main__':
             update_Race_Icon()
 
         
-        Race_Icon.pack(side=LEFT)
+        Race_Icon.pack(side=LEFT, padx= 24)
         Race_Icon.bind('<Button-1>', change_race_icon)
         
         update_Race_Icon()
 
 
+        ActionSFrame = Frame(SecondFrame, bg=Tab_Color,bd=2)
+        ActionSFrame.pack(side = LEFT, anchor= CENTER)
         #Actions
+        photo_null = ImageTk.PhotoImage(Image.open(image_action_null).resize((40,40), Image.NEAREST))
+        photo_anytime = ImageTk.PhotoImage(Image.open(image_action_anytime).resize((40,40), Image.NEAREST))
+        photo_movement = ImageTk.PhotoImage(Image.open(image_action_movement).resize((40,40), Image.NEAREST))
+        photo_attack = ImageTk.PhotoImage(Image.open(image_action_attack).resize((40,40), Image.NEAREST))
+        photo_spell = ImageTk.PhotoImage(Image.open(image_action_spell).resize((40,40), Image.NEAREST))
+        photo_Arrow = ImageTk.PhotoImage(Image.open(image_Arrow).resize((20,20), Image.NEAREST))
+        
 
-        def Actions(action = 0):
-            ActionFrame = Frame(SecondFrame, bg=Tab_Color,bd=2)
+        def Actions(act):
+            ActionFrame = Frame(ActionSFrame, bg=Tab_Color,bd=2)
             ActionFrame.pack(side = LEFT, padx = 5)
-            
-            Action_Icon_Base = ImageTk.PhotoImage(Image.open(image_action_null))
-            Action_Icon= Label(ActionFrame, bg=Tab_Color, image = Action_Icon_Base)
-            def update_action():
-                icon = image_action_null
-                if action == 1:
-                    icon = image_action_anytime
-                elif action == 2:
-                    icon = image_action_movement
-                elif action == 3:
-                    icon = image_action_attack
-                elif action == 4:
-                    icon = image_action_spell
-                else:
-                    icon = image_action_null
-                updated_image = ImageTk.PhotoImage(Image.open(icon).resize((20,20), Image.NEAREST))
-                Race_Icon.configure(image=updated_image)
-                Race_Icon.image = updated_image
-            # def trigger_action(event = None):
-            #     action = action *-1
-            #     update_action()
-            Action_Icon.pack(side=LEFT)
-            # Action_Icon.bind('<Button-1>', trigger_action)
-        for i in Character.actions:
-            Actions(action = i)
-            
 
+            def Rotate_Action(a):
+                Character.ChangeAction(a)
+                update_action(a)
+
+            ChangeActionIcon = Label(ActionFrame, bg=Tab_Color, image = photo_Arrow)
+            ChangeActionIcon.bind('<Button-1>', lambda event, action=act:Rotate_Action(action))
+            ChangeActionIcon.configure(image=photo_Arrow)
+            ChangeActionIcon.image = photo_Arrow
+            
+            ChangeActionIcon.pack(side=TOP)
+            
+            Action_Icon= Label(ActionFrame, bg=Tab_Color, image = photo_null)
+            def update_action(acti):
+                action = Character.actions[acti]
+                aicon = image_action_null
+                if action == 1:
+                    aicon = photo_anytime
+                elif action == 2:
+                    aicon = photo_movement
+                elif action == 3:
+                    aicon = photo_attack
+                elif action == 4:
+                    aicon = photo_spell
+                else:
+                    aicon = photo_null
+                Action_Icon.configure(image=aicon)
+                Action_Icon.image = aicon
+            def trigger_action(a):
+                Character.actions[a] = Character.actions[a]*-1
+                print(Character.PlayerName + " || " + Character.CharName + " updated action: " + str(a))
+                update_action(a)
+            update_action(act)
+            Action_Icon.bind('<Button-1>', lambda event, action=act:trigger_action(action))
+            Action_Icon.pack(side=TOP)
+            def Remove_Action(event = None):
+                ActionFrame.pack_forget()
+                print(Character.PlayerName + " || " + Character.CharName + " Removed Action")
+            RemoveAction_Var = StringVar()
+            RemoveAction_Button= Label(ActionFrame, textvariable=RemoveAction_Var, bg=Tab_Color, fg=Text_Color, font = LebelFont)
+            RemoveAction_Var.set("-")
+            RemoveAction_Button.pack(side=BOTTOM)
+            RemoveAction_Button.bind('<Button-1>', Remove_Action)
+        for a in range(0, len(Character.actions)):
+            Actions(a)
+
+        def add_action(event = None):
+            lenth = len(Character.actions)
+            Character.actions.append(1)
+            print(Character.PlayerName + " || " + Character.CharName + " Added Action")
+
+            Actions(lenth)
+        AddAction_Var = StringVar()
+        AddAction_Button= Label(ActionSFrame, textvariable=AddAction_Var, bg=Tab_Color, fg=Text_Color, font = LebelFont)
+        AddAction_Var.set("+")
+        AddAction_Button.pack(side=RIGHT)
+        AddAction_Button.bind('<Button-1>', add_action)
+        
+
+            
+        #Gold
+
+        photo_Gold = ImageTk.PhotoImage(Image.open(image_Gold).resize((20,20), Image.NEAREST))
+
+        
+        GoldFrame = Frame(SecondFrame, bg=Tab_Color,bd=2)
+        GoldFrame.pack(side = LEFT, padx = (64,0), )
+        
+        def Increase_Gold(event=None):
+            Character.gold = Character.gold+5
+            Gold_Var.set(str(Character.gold))
+            print(Character.PlayerName + " || " + Character.CharName + " Increased Gold: " + str(Character.gold))
+        def Decrease_Gold(event=None):
+            Character.gold = Character.gold-5
+            if Character.gold < 0:
+                Character.gold = 0
+            Gold_Var.set(str(Character.gold))
+            print(Character.PlayerName + " || " + Character.CharName + " Decreassed Gold: " + str(Character.gold))
+        
+        GoldFrame.bind('<Button-1>', Decrease_Gold)
+        GoldFrame.bind('<Button-2>', Increase_Gold)
+        GoldFrame.bind('<Button-3>', Increase_Gold)
+        
+        GoldFrame.pack(side = LEFT, padx = (64,5), fill=X)
+        GoldIcon = Label(GoldFrame, bg=Tab_Color, image = photo_Gold)
+        GoldIcon.configure(image=photo_Gold)
+        GoldIcon.image = photo_Gold
+        GoldIcon.pack(side = LEFT, padx = 5)
+        Gold_Var = StringVar()
+        GoldNum = Label(GoldFrame, bg=Tab_Color, textvariable=Gold_Var, font = LebelFont, fg = Text_Color)
+        Gold_Var.set(str(Character.gold))
+        GoldNum.pack(side = RIGHT)
+        
+        GoldIcon.bind('<Button-1>', Decrease_Gold)
+        GoldIcon.bind('<Button-2>', Increase_Gold)
+        GoldIcon.bind('<Button-3>', Increase_Gold)
+        GoldNum.bind('<Button-1>', Decrease_Gold)
+        GoldNum.bind('<Button-2>', Increase_Gold)
+        GoldNum.bind('<Button-3>', Increase_Gold)
+        
+
+        
 
                 
+        #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+        # Third Row Frame
+        #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+        ThirdFrame = Frame(CharFrame, bg=Tab_Color,bd=2)
+        ThirdFrame.pack(side = TOP, anchor=NW)
+
+        # Player Name
+        PlayerName = StringVar()
+        Player_Name = Label(ThirdFrame, textvariable=PlayerName, bg=Tab_Color, fg=Text_Color, font = LebelFont)
+        PlayerName.set(Character.PlayerName)
+        Player_Name.pack(side = LEFT, padx=5, anchor=NW)
 
         print("Created New Character Tab")
 
@@ -269,6 +364,9 @@ if __name__=='__main__':
 
     image_plus = "./assets/img/+.png"
     image_minus = "./assets/img/-.png"
+    image_Arrow = "./assets/img/Arrow.png"
+    image_Gold = "./assets/img/Gold.png"
+
 
     image_action_null = "./assets/img/Null.png"
     image_action_anytime = "./assets/img/Anytime.png"
