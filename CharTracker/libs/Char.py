@@ -13,6 +13,7 @@ class Character():
         # 4 = Spell
         self.actions = [3,4,2,1]
         self.spells = []
+        self.pos_Race = ["DWARF", "ELF", "GNOME","CROWN", "BEAST", "MANDOZIAN", "CATHARINES", "ENORKANS", "XENOKIAN", "VESTIAN", "SWORD", "HERGSOIGISE"]
     def ChangePlayerName(self, NewName):
         self.PlayerName = NewName
     def ChangeCharacterName(self, NewName):
@@ -24,12 +25,11 @@ class Character():
         if self.health <= 0:
             self.health = 0
     def ChangeRace(self):
-        pos_Race = ["DWARF", "ELF", "GNOME","CROWN", "BEAST", "MANDOZIAN", "CATHARINES", "ENORKANS", "XENOKIAN", "VESTIAN", "SWORD", "HERGSOIGISE"]
-        current = pos_Race.index(self.race)
-        if current+1 > len(pos_Race)-1:
-            self.race = pos_Race[0]
+        current = self.pos_Race.index(self.race)
+        if current+1 > len(self.pos_Race)-1:
+            self.race = self.pos_Race[0]
         else:
-            self.race = pos_Race[current+1]
+            self.race = self.pos_Race[current+1]
     def ChangeAction(self, space):
         self.actions[space] = self.actions[space]+1
         if self.actions[space] >4:

@@ -19,7 +19,7 @@ if __name__=='__main__':
 
         #Create Character Frame
         CharFrame = Frame(PlayerFrame, bg=Tab_Color,bd=2)
-        CharFrame.pack(side = TOP, pady = 10)
+        CharFrame.pack(side = TOP, pady = 5, anchor=W)
 
 
         #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -344,15 +344,136 @@ if __name__=='__main__':
         # Third Row Frame
         #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
         ThirdFrame = Frame(CharFrame, bg=Tab_Color,bd=2)
-        ThirdFrame.pack(side = TOP, anchor=NW)
+        ThirdFrame.pack(side = TOP,fill=X)
 
         # Player Name
         PlayerName = StringVar()
         Player_Name = Label(ThirdFrame, textvariable=PlayerName, bg=Tab_Color, fg=Text_Color, font = LebelFont)
         PlayerName.set(Character.PlayerName)
-        Player_Name.pack(side = LEFT, padx=5, anchor=NW)
+        Player_Name.pack(side = LEFT, padx=5, anchor=W)
 
         print("Created New Character Tab")
+        
+        #Full edit tab
+        
+        Advanced_Edit_Text = StringVar()
+        Advanced_Edit = Label(ThirdFrame, textvariable=Advanced_Edit_Text, bg=Tab_Color, fg=Text_Color, font = LebelFont)
+        Advanced_Edit_Text.set("Advanced")
+        Advanced_Edit.pack(side = RIGHT, padx=5, anchor=E)
+
+
+
+        #Advanced Tab Form
+        def Advanced_Tab(event=None):
+
+            AdvancedFrame = Frame(CharFrame, bg=Tab_Color,bd=2)
+            AdvancedFrame.pack(side = RIGHT, anchor=SW)
+
+            #PlayerName
+            Form_PlayerName_Frame = Frame(AdvancedFrame, bg=Tab_Color,bd=2)
+            Form_PlayerName_Frame.pack(side = TOP, anchor=W)
+            Form_PlayerName = StringVar()
+            From_PlayerName_Label = Label(Form_PlayerName_Frame, textvariable=Form_PlayerName, bg=Tab_Color, fg=Text_Color, font = LebelFont)
+            Form_PlayerName.set("Player Name: ")
+            From_PlayerName_Label.pack(side = LEFT, padx=5)
+            Form_Playername_Entry_Var = StringVar()
+            Form_PlayerName_Entry = Entry(Form_PlayerName_Frame, textvariable=Form_Playername_Entry_Var, bg=Tab_Color, fg=Text_Color, font = LebelFont, bd=2)
+            Form_Playername_Entry_Var.set(Character.PlayerName)
+            Form_PlayerName_Entry.pack(side = LEFT, padx = 5)
+
+            #CharName
+            Form_CharName_Frame = Frame(AdvancedFrame, bg=Tab_Color,bd=2)
+            Form_CharName_Frame.pack(side = TOP, anchor=W)
+            Form_CharName = StringVar()
+            From_CharName_Label = Label(Form_CharName_Frame, textvariable=Form_CharName, bg=Tab_Color, fg=Text_Color, font = LebelFont)
+            Form_CharName.set("Character Name: ")
+            From_CharName_Label.pack(side = LEFT, padx=5)
+            Form_CharName_Entry_Var = StringVar()
+            Form_CharName_Entry = Entry(Form_CharName_Frame, textvariable=Form_CharName_Entry_Var, bg=Tab_Color, fg=Text_Color, font = LebelFont, bd=2)
+            Form_CharName_Entry_Var.set(Character.CharName)
+            Form_CharName_Entry.pack(side = LEFT, padx = 5)
+
+            #Race
+            Form_race_Frame = Frame(AdvancedFrame, bg=Tab_Color,bd=2)
+            Form_race_Frame.pack(side = TOP, anchor=W)
+            Form_race = StringVar()
+            From_race_Label = Label(Form_race_Frame, textvariable=Form_race, bg=Tab_Color, fg=Text_Color, font = LebelFont)
+            Form_race.set("Race: ")
+            From_race_Label.pack(side = LEFT, padx=5)
+            Form_race_menu_Var = StringVar()
+            Form_race_menu = OptionMenu(Form_race_Frame, Form_race_menu_Var, *Character.pos_Race)
+            Form_race_menu_Var.set(Character.race)
+            Form_race_menu.pack(side=LEFT, padx=5)
+
+            #maxhealth
+            Form_maxhealth_Frame = Frame(AdvancedFrame, bg=Tab_Color,bd=2)
+            Form_maxhealth_Frame.pack(side = TOP, anchor=W)
+            Form_maxhealth = StringVar()
+            From_maxhealth_Label = Label(Form_maxhealth_Frame, textvariable=Form_maxhealth, bg=Tab_Color, fg=Text_Color, font = LebelFont)
+            Form_maxhealth.set("Max Health: ")
+            From_maxhealth_Label.pack(side = LEFT, padx=5)
+            Form_maxhealth_Entry_Var = StringVar()
+            Form_maxhealth_Entry = Entry(Form_maxhealth_Frame, textvariable=Form_maxhealth_Entry_Var, bg=Tab_Color, fg=Text_Color, font = LebelFont, bd=2)
+            Form_maxhealth_Entry_Var.set(Character.maxhealth)
+            Form_maxhealth_Entry.pack(side = LEFT, padx = 5)
+
+            #health
+            Form_health_Frame = Frame(AdvancedFrame, bg=Tab_Color,bd=2)
+            Form_health_Frame.pack(side = TOP, anchor=W)
+            Form_health = StringVar()
+            From_health_Label = Label(Form_health_Frame, textvariable=Form_health, bg=Tab_Color, fg=Text_Color, font = LebelFont)
+            Form_health.set("Health: ")
+            From_health_Label.pack(side = LEFT, padx=5)
+            Form_health_Entry_Var = StringVar()
+            Form_health_Entry = Entry(Form_health_Frame, textvariable=Form_health_Entry_Var, bg=Tab_Color, fg=Text_Color, font = LebelFont, bd=2)
+            Form_health_Entry_Var.set(Character.health)
+            Form_health_Entry.pack(side = LEFT, padx = 5)
+
+            #gold
+            Form_gold_Frame = Frame(AdvancedFrame, bg=Tab_Color,bd=2)
+            Form_gold_Frame.pack(side = TOP, anchor=W)
+            Form_gold = StringVar()
+            From_gold_Label = Label(Form_gold_Frame, textvariable=Form_gold, bg=Tab_Color, fg=Text_Color, font = LebelFont)
+            Form_gold.set("Gold/Money: ")
+            From_gold_Label.pack(side = LEFT, padx=5)
+            Form_gold_Entry_Var = StringVar()
+            Form_gold_Entry = Entry(Form_gold_Frame, textvariable=Form_gold_Entry_Var, bg=Tab_Color, fg=Text_Color, font = LebelFont, bd=2)
+            Form_gold_Entry_Var.set(Character.gold)
+            Form_gold_Entry.pack(side = LEFT, padx = 5)
+
+            #SaveButton
+            Form_Save_Frame = Frame(AdvancedFrame, bg=Text_Color,bd=2)
+            Form_Save_Frame.pack(side = TOP, anchor=E)
+            Form_save = StringVar()
+            From_save_Label = Label(Form_Save_Frame, textvariable=Form_save, bg=Tab_Color, fg=Text_Color, font = LebelFont)
+            Form_save.set("Save & Close")
+            From_save_Label.pack(side = LEFT, padx=5)
+            def update_Character(event=None):
+                Character.PlayerName = Form_PlayerName_Entry.get()
+                Character.CharName = Form_CharName_Entry.get()
+                Character.race = Form_race_menu_Var.get()
+                Character.maxhealth = int(Form_maxhealth_Entry.get())
+                Character.health = int(Form_health_Entry.get())
+                Character.gold = int(Form_gold_Entry.get())
+                
+                CharName.set(Character.CharName)
+                update_Stam_Bar()
+                update_Race_Icon()
+                Increase_Gold()
+                Decrease_Gold()
+                PlayerName.set(Character.PlayerName)
+
+                AdvancedFrame.forget()
+            Form_Save_Frame.bind('<Button-1>', update_Character)
+            From_save_Label.bind('<Button-1>', update_Character)
+        Advanced_Edit.bind('<Button-1>', Advanced_Tab)
+
+
+
+
+            
+
+
 
         
 
