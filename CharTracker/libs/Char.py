@@ -12,6 +12,7 @@ class Character():
         # 3 = Basic Attack
         # 4 = Spell
         self.actions = [3,4,2,1]
+        self.stats = []
         self.spells = []
         self.pos_Race = ["DWARF", "ELF", "GNOME","CROWN", "BEAST", "MANDOZIAN", "CATHARINES", "ENORKANS", "XENOKIAN", "VESTIAN", "SWORD", "HERGSOIGISE"]
     def ChangePlayerName(self, NewName):
